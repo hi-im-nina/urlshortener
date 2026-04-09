@@ -1,0 +1,24 @@
+# Compiled binary
+urlshortener
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Dependency vendor directory (if you ever run `go mod vendor`)
+vendor/
+
+# Environment files (keep secrets out of git)
+.env
+.env.*
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo

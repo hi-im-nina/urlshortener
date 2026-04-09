@@ -10,7 +10,22 @@ func main() {
 	const port = "8080"
 	const baseURL = "http://localhost:" + port
 
-	store := NewStore()
+	// Try to connect to Redis first.
+	// If Redis isn't running (e.g. during local development without Docker),
+	// we fall back to the in-memory store so the app still works.
+	//
+	// In production you'd want to fail hard here instead of falling back —
+	// silent fallbacks can hide infrastructure problems.
+	var store URLStore
+	redisStore, err := NewRedisStore("localhost:6379")
+	if err != nil {
+		log.Printf("Redis unavailable (%v) — falling back to in-memory store", err)
+		store = NewMemoryStore()
+	} else {
+		log.Println("Connected to Redis at localhost:6379")
+		store = redisStore
+	}
+
 	h := &Handlers{
 		store:   store,
 		baseURL: baseURL,

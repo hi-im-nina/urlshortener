@@ -15,8 +15,8 @@ import (
 // code hard to test — with this pattern, tests can create a fresh store for
 // each test case.
 type Handlers struct {
-	store    *Store
-	baseURL  string
+	store   URLStore // interface — works with MemoryStore, RedisStore, or anything else
+	baseURL string
 }
 
 // ShortenRequest is the JSON body we expect for POST /shorten.
