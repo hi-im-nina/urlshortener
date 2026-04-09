@@ -13,7 +13,7 @@ import (
 // of good testing called "test isolation".
 func newTestHandlers() *Handlers {
 	return &Handlers{
-		store:   NewStore(),
+		store:   NewMemoryStore(),
 		baseURL: "http://localhost:8080",
 	}
 }

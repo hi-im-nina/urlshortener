@@ -23,7 +23,7 @@ func GenerateCode() (string, error) {
 }
 
 // GenerateUniqueCode retries until it finds a code not already in the store.
-func GenerateUniqueCode(store *Store) (string, error) {
+func GenerateUniqueCode(store URLStore) (string, error) {
 	for {
 		code, err := GenerateCode()
 		if err != nil {
