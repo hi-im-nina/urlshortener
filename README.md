@@ -1,13 +1,13 @@
-# URL Shortener
+# ⭐ 🔗 URL Shortener 🔗 ⭐
 
 A simple URL shortening service written in Go. Supports both in-memory storage (for local development) and Redis (for persistence).
 
-## Prerequisites
+## 🏗️ Prerequisites
 
 - [Go 1.22+](https://go.dev/dl/)
 - Redis (optional — the app falls back to in-memory storage if Redis isn't running)
 
-## Running the server
+## 🏃🏻‍♀️ Running the server
 
 ```bash
 go run .
@@ -20,7 +20,7 @@ Connected to Redis at localhost:6379        # Redis is running
 Redis unavailable — falling back to in-memory store  # No Redis, that's fine
 ```
 
-## Running with Redis (optional)
+## 🗃️ Running with Redis (optional)
 
 If you have [Docker](https://www.docker.com/) installed, the easiest way to start Redis is:
 
@@ -30,7 +30,7 @@ docker run -p 6379:6379 redis
 
 Then in a separate terminal, run `go run .` and you'll see it connect.
 
-## API
+## API Documentation
 
 ### Shorten a URL
 
@@ -74,7 +74,7 @@ Response:
 }
 ```
 
-## Running tests
+## 🧪 Running tests
 
 ```bash
 go test ./...
