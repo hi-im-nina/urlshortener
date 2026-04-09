@@ -37,7 +37,7 @@ Then in a separate terminal, run `go run .` and you'll see it connect.
 ```bash
 curl -X POST http://localhost:8080/shorten \
   -H "Content-Type: application/json" \
-  -d '{"url": "https://hinge.co"}'
+  -d '{"url": "https://hi-im-nina.github.io"}'
 ```
 
 Response:
@@ -45,7 +45,7 @@ Response:
 ```json
 {
   "short_url": "http://localhost:8080/aB3xZ9",
-  "original_url": "https://hinge.co"
+  "original_url": "https://hi-im-nina.github.io/"
 }
 ```
 
@@ -68,7 +68,7 @@ Response:
 ```json
 {
   "short_url": "http://localhost:8080/aB3xZ9",
-  "original_url": "https://hinge.co",
+  "original_url": "https://hi-im-nina.github.io/",
   "clicks": 3,
   "created_at": "2026-04-09 10:00:00"
 }

@@ -22,8 +22,6 @@ type RedisStore struct {
 
 // NewRedisStore connects to Redis and returns a RedisStore.
 // addr is in "host:port" format, e.g. "localhost:6379".
-//
-// Redis's default port is 6379 — you'll want to remember that for interviews.
 func NewRedisStore(addr string) (*RedisStore, error) {
 	client := redis.NewClient(&redis.Options{
 		Addr: addr,
@@ -51,7 +49,8 @@ func redisKey(code string) string {
 // Save stores a new short code → long URL mapping as a Redis Hash.
 //
 // A Redis Hash is like a mini-dictionary inside a key:
-//   redis> HSET url:aB3xZ9 long_url "https://hinge.co" created_at "..." clicks 0
+//
+//	redis> HSET url:aB3xZ9 long_url "https://hi-im-nina.github.io" created_at "..." clicks 0
 //
 // We use HSet (hash set) rather than Set (plain string) because we need to
 // store multiple fields (long_url, created_at, clicks) under one key.
@@ -96,9 +95,6 @@ func (s *RedisStore) Get(code string) (*URLEntry, bool) {
 // "Atomically" is the key word here — Redis processes commands one at a time,
 // so HIncrBy is guaranteed to never have a race condition. This is one of
 // Redis's killer features: you don't need mutexes like in our MemoryStore.
-//
-// In an interview: "Redis is single-threaded on the command level, so
-// increment operations are inherently atomic."
 func (s *RedisStore) IncrementClicks(code string) {
 	ctx := context.Background()
 	s.client.HIncrBy(ctx, redisKey(code), "clicks", 1)
